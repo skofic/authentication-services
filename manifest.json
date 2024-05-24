@@ -1,0 +1,146 @@
+{
+    "name": "Data-Dictionary",
+    "version": "0.1.1",
+    "description": "Data dictionary service.",
+    "engines": {
+        "arangodb": "^3.0.0"
+    },
+    "author": "Milko Škofič",
+    "license": "Apache 2",
+    "main": "main.js",
+    "scripts": {
+        "setup": "scripts/setup.js",
+        "teardown": "scripts/teardown.js"
+    },
+    "configuration": {
+        "adminCode": {
+            "description": "Default administrator user code.",
+            "type": "string",
+            "required": true,
+            "default": "admin"
+        },
+        "adminPass": {
+            "description": "Default administrator user password.",
+            "type": "password",
+            "required": true,
+            "default": "secret"
+        },
+        "dataDir": {
+            "description": "Data directory name",
+            "type": "string",
+            "required": true,
+            "default": "data"
+        },
+        "language": {
+            "description": "Default language ISO code.",
+            "type": "string",
+            "required": true,
+            "default": "iso_639_3_eng"
+        },
+        "cookie": {
+            "description": "Cookie name",
+            "type": "string",
+            "required": true,
+            "default": "FOXXSID"
+        },
+        "method": {
+            "description": "Hashing algorithm for creating password hashes",
+            "type": "string",
+            "required": true,
+            "default": "sha256"
+        },
+        "saltLength": {
+            "description": "Length of the salts that will be generated for password hashes",
+            "type": "integer",
+            "required": true,
+            "default": 16
+        },
+        "secretLength": {
+            "description": "Length of the cookie secret",
+            "type": "integer",
+            "required": true,
+            "default": 48
+        },
+        "timeToLive": {
+            "description": "Cookie time to live (60 * 60 * 24 * 7)",
+            "type": "integer",
+            "required": true,
+            "default": 604800
+        },
+        "collectionTerm": {
+            "description": "Terms collection name",
+            "type": "string",
+            "required": true,
+            "default": "terms"
+        },
+        "collectionEdge": {
+            "description": "Edges collection name",
+            "type": "string",
+            "required": true,
+            "default": "edges"
+        },
+        "collectionLink": {
+            "description": "Links collection name",
+            "type": "string",
+            "required": true,
+            "default": "links"
+        },
+        "collectionTopo": {
+            "description": "Topography collection name",
+            "type": "string",
+            "required": true,
+            "default": "topos"
+        },
+        "collectionUser": {
+            "description": "Users collection name",
+            "type": "string",
+            "required": true,
+            "default": "users"
+        },
+        "collectionSession": {
+            "description": "Sessions collection name",
+            "type": "string",
+            "required": true,
+            "default": "sessions"
+        },
+        "collectionSettings": {
+            "description": "Settings collection name",
+            "type": "string",
+            "required": true,
+            "default": "settings"
+        },
+        "collectionError": {
+            "description": "Errors collection name",
+            "type": "string",
+            "required": true,
+            "default": "errors"
+        },
+        "collectionLog": {
+            "description": "Logs collection name",
+            "type": "string",
+            "required": true,
+            "default": "logs"
+        }
+    },
+    "tests": [
+        "test/functions/test_ItWorks.js",
+
+        "test/functions/test_ItWorks.js",
+
+        "test/functions/test_validateDescriptor.js",
+        "test/functions/test_validateDataBlock.js",
+
+        "test/functions/test_validateScalar.js",
+        "test/functions/test_validateArray.js",
+        "test/functions/test_validateSet.js",
+        "test/functions/test_validateDictionary.js",
+
+        "test/functions/test_validateValue.js",
+
+        "test/functions/test_validateBoolean.js",
+        "test/functions/test_validateInteger.js",
+        "test/functions/test_validateNumber.js",
+        "test/functions/test_validateTimestamp.js",
+        "test/functions/test_validateString.js"
+    ]
+}
