@@ -31,7 +31,7 @@ router.tag( 'Utilities' )
  * The service will return pong.
  */
 router.get('/ping', doPong, 'ping')
-    .summary("Check if database is on-line.")
+    .summary("Ping.")
     .description(dd
         `
             **Ping database**

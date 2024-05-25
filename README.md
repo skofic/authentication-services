@@ -262,3 +262,67 @@ The service will return:
 - `200`: If *successful*, the service will return the operation outcome as a message.
 - `404`: *User not found*: this error is either returned if the current session user cannot be located, or if there is no current user in the session.
 - `500`: *Other errors*.
+
+### Utilities
+
+This set of services provide a set of helper functions.
+
+#### Ping
+
+This service will ping the database, it will return the string "`pong`" if successful.
+
+#### Mirror the GET response data
+
+This service will return the full GET request contents. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+The service will return:
+
+- `200`: If *successful*, the service will return the full response body.
+- `500`: *Any error*.
+
+#### Mirror the POST response data
+
+This service will return the full POST request contents. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+You can set any data in the body.
+
+The service will return:
+
+- `200`: If *successful*, the service will return the full response body.
+- `500`: *Any error*.
+
+#### Return the base path
+
+This service will return the base path of the service application. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+The service will return:
+
+- `200`: If *successful*, the service will return the base application file path.
+- `500`: *Any error*.
+
+#### Return the temp path
+
+This service will return the temporary files path of the service application. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+The service will return:
+
+- `200`: If *successful*, the service will return the base temporary files path.
+- `500`: *Any error*.
+
+#### Return the temp file path
+
+The service will return the path to a temporary file, *the file will not be created*. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+The service will return:
+
+- `200`: If *successful*, the service will return the path to the temporary file.
+- `500`: *Any error*.
+
+#### Return the current session
+
+The service will return the current session record. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+The service will return:
+
+- `200`: If *successful*, the `collectionSession` record of the current session.
+- `500`: *Any error*.
