@@ -20,9 +20,7 @@ module.exports = Object.freeze({
         buffer: 819200,
         auth: 'AUTH',
         role: {
-            admin: "admin",
-            dict: "dict",
-            read: "read"
+            admin: "admin"
         }
     },
 

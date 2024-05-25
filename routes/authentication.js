@@ -54,7 +54,7 @@ router.tag('Authentication')
  * This service will login a user given its code and password.
  */
 router.post('login', doLogin, 'login')
-	.summary('Login user')
+	.summary('Login')
 	.description(dd
 		`
             **Login user**
