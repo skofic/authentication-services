@@ -1,17 +1,53 @@
 # Authentication Services
 
-This repository contains the [ArangoDB](https://www.arangodb.com) [Foxx micro service](https://www.arangodb.com/docs/stable/foxx.html) to manage and use the data dictionary.
+This repository contains the [ArangoDB](https://www.arangodb.com) [Foxx micro services](https://www.arangodb.com/docs/stable/foxx.html) to manage users and credentials.
 
 ## Installation
 
 1. You must first either install [ArangoDB](https://www.arangodb.com), or have an existing database available.
-2. Create a database, any name will do.
-3. *Add service* to the database. The best way is to select the GitHub tab and enter `skofic/data-dictionary-service` in the *Repository* field, and `main` in the *Version* field. The *Mount point* can be any string. Turn on *Run* setup flag.
-4. Load the dictionary terms. To load the database with some standards you can go to the Data Dictionary Management [GitHub repository](https://github.com/skofic/data-dictionary-management). Follow the instructions and you will have a working data dictionary.
+2. *Create* or *select* an existing *database*.
+3. In the `Services` *left tab* press the `+ Add service` button.
+4. Select the `GitHub` *top tab*, set the `Repository*` field to **skofic/authentication-services** and the `Version*` field to **main**; press the `Install` button.
+5. An alert will be presented requesting the `Mount point` for the service, you can provide *any suitable value*, ensure the `Run setup?` checkbox is *checked*. Press the `Install` button.
 
-## Documentation
+At this point the service will do the following actions:
 
-There is not yet definitive documentation available, but you can go to **[this](https://github.com/skofic/data-dictionary-management/blob/main/docs/README.md)** page to have an idea of the principles and ideas behind this data dictionary.
+1. It will create the necessary *collections*, if not already there:
+    - The *error* collection that will hold eventual errors.
+    - The *user* collection to store users.
+    - The *sessions* collection to keep track of user sessions.
+    - The *settings* collection that holds default settings.
+2. It will initialise *root level directories*, if not already there:
+    - It will create the default *data directory*.
+3. It will create and initialise the *authentication file* with the *administrator*, *user* and *cookies* authentication data.
+4. It will create the *default administrator* user.
+
+You will see that in the Services left tab there is a top tab called `Settings`: this can be used to *customise* the general *settings*:
+
+- Default administrator:
+    - `adminCode`: Default administrator user code.
+    - `adminPass`: Default administrator password.
+- General standards:
+    - `dataDir`: The name of the root level data directory.
+    - `language`: Default language ISO code: this is the code used in the [data dictionary](https://github.com/skofic/data-dictionary-service).
+- Cryptographic settings:
+    - `cookie`: Cookie name
+    - `method`: Hashing algorithm for creating passwords.
+    - `saltLength`: Length of the salt that will be generated for password hashes.
+    - `secretLength`: Length of the cookie secret.
+    - `timeToLive`: Cookie time to live (60 x 60 x 24 x 7).
+- Collection names:
+    - `collectionUser`: Users.
+    - `collectionSession`: Sessions.
+    - `collectionSettings`: Settings.
+    - `collectionError`: Errors.
+    - `collectionLog`: Logs.
+
+## Database
+
+This set of services expects the collections that are created during the setup phase:
+
+- 
 
 ## Services
 

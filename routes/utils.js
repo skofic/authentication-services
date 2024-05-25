@@ -23,7 +23,7 @@ const Session = require('../utils/sessions')
 const createRouter = require('@arangodb/foxx/router')
 const router = createRouter()
 module.exports = router
-router.tag( 'Administration utilities' )
+router.tag( 'Utilities' )
 
 
 /**

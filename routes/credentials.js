@@ -12,7 +12,6 @@ const joi = require('joi')
 const aql = require('@arangodb').aql
 const status = require('statuses')
 const errors = require('@arangodb').errors
-const httpError = require('http-errors')
 
 //
 // Error codes.
@@ -20,8 +19,6 @@ const httpError = require('http-errors')
 const ARANGO_CONFLICT = errors.ERROR_ARANGO_CONFLICT.code;
 const ARANGO_NOT_FOUND = errors.ERROR_ARANGO_DOCUMENT_NOT_FOUND.code
 const ARANGO_DUPLICATE = errors.ERROR_ARANGO_UNIQUE_CONSTRAINT_VIOLATED.code
-const HTTP_NOT_FOUND = status('not found');
-const HTTP_CONFLICT = status('conflict');
 
 //
 // Application constants.
@@ -42,7 +39,6 @@ const users = K.db._collection(K.collection.user.name)
 const UserSetRoles = require('../models/user_roles_set')
 const UserSetPassword = require('../models/user_password_set')
 const UserSignupModel = require('../models/user_signup')
-const UserCredentialsModel = require('../models/user_credentials')
 const UserSelectionModel = require('../models/user_selection')
 const UserDisplayModel = require('../models/user_display')
 const UserResetModel = require('../models/user_reset')
@@ -62,51 +58,8 @@ const UserDisplayListModel =
 const createRouter = require('@arangodb/foxx/router')
 const router = createRouter()
 module.exports = router
-router.tag('Authentication')
+router.tag('Credentials')
 
-
-/**
- * Login user service
- * This service will login a user given its code and password.
- */
-router.post('login', doLogin, 'login')
-	.summary('Login user')
-	.description(dd
-		`
-            **Login user**
-            
-            *Use this service if you need to login.*
-        `
-	)
-	.body(UserCredentialsModel, dd
-		`
-            **Service parameters**
-            
-            - \`username\`: The username or user code.
-            - \`password\`: The user password.
-        `
-	)
-	.response(200, UserDisplayModel, dd
-		`
-            **User record**
-            
-            The service will return the user document.
-        `
-	)
-	.response(401, ErrorModel, dd
-		`
-            **Invalid password**
-            
-            Provided a password that does not match the user authentication data.
-        `
-	)
-	.response(404, ErrorModel, dd
-		`
-            **Unable to find user**
-            
-            No user exists with the provided username.
-        `
-	)
 
 /**
  * Signup user service
@@ -180,62 +133,6 @@ router.post(
             **Username conflict**
             
             The service will return this code if the provided user already exists.
-        `
-	)
-
-/**
- * Who am I? service
- * This service will return the current user record or an empty object.
- */
-router.get('whoami', doWhoAmI, 'whoami')
-	.summary('Who am I?')
-	.description(dd
-		`
-            **Current session user**
-            
-            *Use this service to retrieve information on the current session user.*
-        `
-	)
-	.response(200, UserDisplayModel, dd
-		`
-            **User record**
-            
-            The service will return the current user record.
-        `
-	)
-	.response(404, ErrorModel, dd
-		`
-            **No current user**
-            
-            The current session does not have a registered user.
-        `
-	)
-
-/**
- * Logout user service
- * This service will logout the user and return its record.
- */
-router.get('logout', doLogout, 'logout')
-	.summary('Logout')
-	.description(dd
-		`
-            **Logout user**
-            
-            *Use this service to logout the current user.*
-        `
-	)
-	.response(200, UserDisplayModel, dd
-		`
-            **User record**
-            
-            The service will return the former current user document.
-        `
-	)
-	.response(404, ErrorModel, dd
-		`
-            **No current user**
-            
-            The current session does not have a registered user.
         `
 	)
 
@@ -664,62 +561,6 @@ router.delete(
 //
 
 /**
- * Login user.
- * @param request: API request.
- * @param response: API response.
- */
-function doLogin(request, response)
-{
-	//
-	// Resolve username.
-	//
-	const username = request.body.username
-	const user = users.firstExample({username})
-	if (user) {
-
-		//
-		// Resolve password.
-		//
-		if (Auth.Module.verify(user.auth, request.body.password)) {
-
-			//
-			// Save session.
-			//
-			request.session.uid = user._key
-			request.session.data = {
-				user: {
-					username: user.username,
-					role: user.role,
-					default: user.default
-				}
-			}
-			request.sessionStorage.save(request.session)
-
-			response.send(request.session.data.user)							// ==>
-
-		} // Valid password.
-
-		else {
-			response.throw(
-				401,
-				K.error.kMSG_UNKNOWN_USER.message[module.context.configuration.language]
-			)																	// ==>
-
-		} // Invalid password.
-
-	} // Valid user.
-
-	else {
-		response.throw(
-			404,
-			K.error.kMSG_UNKNOWN_USER.message[module.context.configuration.language]
-		)																		// ==>
-
-	} // Invalid user.
-
-} // doLogin()
-
-/**
  * Signup user.
  * @param request: API request.
  * @param response: API response.
@@ -753,9 +594,9 @@ function doSignup(request, response)
 		})                                                                      // ==>
 	}
 
-	//
-	// Assume duplicate user.
-	//
+		//
+		// Assume duplicate user.
+		//
 	catch (error) {
 		if(error.isArangoError && error.errorNum === ARANGO_DUPLICATE) {
 			response.throw(
@@ -770,61 +611,6 @@ function doSignup(request, response)
 	}
 
 } // doSignup()
-
-/**
- * Return current user.
- * @param request: API request.
- * @param response: API response.
- */
-function doWhoAmI(request, response) {
-
-	//
-	// Check if there is a logged in user.
-	//
-	if (request.session.uid !== null) {
-		response.send(request.session.data.user)
-		return                                                                  // ==>
-	}
-
-	response.throw(
-		404,
-		K.error.kMSG_NO_CURRENT_USER.message[module.context.configuration.language]
-	)
-
-} // doWhoAmI()
-
-/**
- * Logout current user.
- * @param request: API request.
- * @param response: API response.
- */
-function doLogout(request, response)
-{
-	//
-	// Check if there is a logged in user.
-	//
-	if (request.session.uid !== null) {
-
-		//
-		// Save current user.
-		//
-		const user = JSON.parse(JSON.stringify(request.session.data.user))
-
-		//
-		// Clear user from session.
-		//
-		Session.clearUser(request)
-
-		response.send(user)
-		return                                                                  // ==>
-	}
-
-	response.throw(
-		404,
-		K.error.kMSG_NO_CURRENT_USER.message[module.context.configuration.language]
-	)                                                                           // ==>
-
-} // doLogout()
 
 /**
  * List users.
@@ -842,14 +628,14 @@ function doListUsers(request, response)
 	// Collect values.
 	//
 	const username = request.body.hasOwnProperty('username')
-				   ? request.body.username
-				   : null
+		? request.body.username
+		: null
 	const role     = request.body.hasOwnProperty('role')
-				   ? request.body.role
-				   : null
+		? request.body.role
+		: null
 	const def      = request.body.hasOwnProperty('default')
-				   ? request.body.default
-				   : null
+		? request.body.default
+		: null
 
 	//
 	// Collect filters.
