@@ -51,16 +51,16 @@ router.get('/ping', doPong, 'ping')
  * The service will return the GET request contents.
  */
 router.get(
-    '/echo/get',
+    '/echo/get/request',
     (request, response) => {
         const roles = [K.environment.role.admin]
         if(Session.hasPermission(request, response, roles)) {
             doMirrorRequest(request, response)
         }
     },
-    'echoGET'
+    'echoGETrequest'
 )
-    .summary("Mirror the GET request data.")
+    .summary("Mirror the GET request.")
     .description(dd
         `
             **Mirror GET request data**
@@ -79,18 +79,50 @@ router.get(
 
 
 /**
+ * Mirror GET response contents
+ * The service will return the GET response contents.
+ */
+router.get(
+    '/echo/get/response',
+    (request, response) => {
+        const roles = [K.environment.role.admin]
+        if(Session.hasPermission(request, response, roles)) {
+            doMirrorResponse(request, response)
+        }
+    },
+    'echoGETresponse'
+)
+    .summary("Mirror the GET response.")
+    .description(dd
+        `
+            **Mirror GET response data**
+            
+            ***To use this service, the current user must have the \`admin\` role.***
+           
+            The service will return the full GET response contents.
+            Can be useful to debug request data.
+        `
+    )
+    .response(200, joi.object(), dd
+        `
+            **The service response**
+        `
+    )
+
+
+/**
  * Mirror POST request contents
  * The service will return the POST request contents.
  */
 router.post(
-    '/echo/post',
+    '/echo/post/request',
     (request, response) => {
         const roles = [K.environment.role.admin]
         if(Session.hasPermission(request, response, roles)) {
             doMirrorRequest(request, response)
         }
     },
-    'echoPOST'
+    'echoPOSTrequest'
 )
     .summary("Mirror the POST request data.")
     .description(dd
@@ -111,6 +143,43 @@ router.post(
     .response(200, joi.object(), dd
         `
             **The service request**
+        `
+    )
+
+
+/**
+ * Mirror POST response contents
+ * The service will return the POST response contents.
+ */
+router.post(
+    '/echo/post/response',
+    (request, response) => {
+        const roles = [K.environment.role.admin]
+        if(Session.hasPermission(request, response, roles)) {
+            doMirrorResponse(request, response)
+        }
+    },
+    'echoPOSTresponse'
+)
+    .summary("Mirror the POST response data.")
+    .description(dd
+        `
+            **Mirror POST response data**
+            
+            ***To use this service, the current user must have the \`admin\` role.***
+            
+            The service will return the full POST response contents.
+            Can be useful to debug request data.
+        `
+    )
+    .body(joi.any(), dd
+        `
+            **Body contents**
+        `
+    )
+    .response(200, joi.object(), dd
+        `
+            **The service response**
         `
     )
 
@@ -266,6 +335,17 @@ function doMirrorRequest(request, response)
     response.send(request)                                                      // ==>
 
 } // doMirrorRequest()
+
+/**
+ * Return GET response.
+ * @param request: API request.
+ * @param response: API response.
+ */
+function doMirrorResponse(request, response)
+{
+    response.send(response)                                                      // ==>
+
+} // doMirrorResponse()
 
 /**
  * Return base path.

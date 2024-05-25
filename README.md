@@ -195,13 +195,13 @@ The service will return:
 
 This service is used by administrators to change the password of a specific user. *This service can only be used by authenticated users that have the* `admin` *role*.
 
-The service expects the user *primary key* in the `key` *query path parameter*. Note that this is the `_key` property of the user record.
+The service expects the user *primary key* in the `key` *query path parameter*. Note that this is the `_key` property of the user record. *Performing this operation by using the username is not implemented, so that only who has access to the* `_key` *can call this service*.
 
 The new password should be provided in the `password` property of the body.
 
 The service will return:
 
-- `200`: If *successful*, the service will return the `username`, `role` and `default` flag of the user.
+- `200`: If *successful*, the service will return the `username` and `role` of the user.
 - `401`: *No current user*: the current session does not have a registered user.
 - `403`: *Unauthorised user*: the service will return this code if the current user is not an administrator.
 - `404`: *User not found*: no user is associated with the provided key.
@@ -226,7 +226,7 @@ The service will return:
 
 This service is used by administrators to change the roles of a specific user. *This service can only be used by authenticated users that have the* `admin` *role*.
 
-The service expects the user *primary key* in the `key` *query path parameter*. Note that this is the `_key` property of the user record.
+The service expects the user *primary key* in the `key` *query path parameter*. Note that this is the `_key` property of the user record. *Performing this operation by using the username is not implemented, so that only who has access to the* `_key` *can call this service*.
 
 Provide the array of *user roles* in the `role` property of the body.
 
@@ -243,7 +243,7 @@ The service will return:
 
 This service is used by administrators to delete a specific user. *This service can only be used by authenticated users that have the* `admin` *role*.
 
-The service expects the user *primary key* in the `key` *query path parameter*. Note that this is the `_key` property of the user record.
+The service expects the user *primary key* in the `key` *query path parameter*. Note that this is the `_key` property of the user record. *Performing this operation by using the username is not implemented, so that only who has access to the* `_key` *can call this service*.
 
 The service will return:
 
@@ -271,18 +271,38 @@ This set of services provide a set of helper functions.
 
 This service will ping the database, it will return the string "`pong`" if successful.
 
-#### Mirror the GET response data
+#### Mirror the GET request data
 
 This service will return the full GET request contents. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+The service will return:
+
+- `200`: If *successful*, the service will return the full request body.
+- `500`: *Any error*.
+
+#### Mirror the GET response data
+
+This service will return the full GET response contents. *This service can only be used by authenticated users that have the* `admin` *role*.
 
 The service will return:
 
 - `200`: If *successful*, the service will return the full response body.
 - `500`: *Any error*.
 
-#### Mirror the POST response data
+#### Mirror the POST request data
 
 This service will return the full POST request contents. *This service can only be used by authenticated users that have the* `admin` *role*.
+
+You can set any data in the body.
+
+The service will return:
+
+- `200`: If *successful*, the service will return the full request body.
+- `500`: *Any error*.
+
+#### Mirror the POST response data
+
+This service will return the full POST response contents. *This service can only be used by authenticated users that have the* `admin` *role*.
 
 You can set any data in the body.
 

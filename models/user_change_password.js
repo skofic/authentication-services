@@ -4,20 +4,20 @@ const _ = require('lodash')
 const joi = require('joi')
 
 /**
- * User display model
- * This model represents the user document returned by authentication services.
+ * User change password model
+ * This model represents the user document returned by authentication services
+ * when changing the user password.
  */
 module.exports = {
 	schema: {
 		// Describe the attributes with joi here
-		_key: joi.string().required(),
-		_code: joi.object().required(),
-		_info: joi.object().required()
+		username: joi.string().required(),
+		default: joi.boolean().default(false).required()
 	},
 
 	forClient(obj) {
 		// Implement outgoing transformations here
-		obj = _.omit(obj, ['_id', '_rev', '_oldRev'])
+		obj = _.omit(obj, ['_id', '_rev', '_oldRev', 'auth'])
 		return obj
 	},
 

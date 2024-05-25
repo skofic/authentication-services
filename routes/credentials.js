@@ -41,6 +41,7 @@ const UserSetPassword = require('../models/user_password_set')
 const UserSignupModel = require('../models/user_signup')
 const UserSelectionModel = require('../models/user_selection')
 const UserDisplayModel = require('../models/user_display')
+const UserChangePasswordModel = require('../models/user_change_password')
 const UserResetModel = require('../models/user_reset')
 const ErrorModel = require('../models/error_generic')
 const keySchema = joi.string().required()
@@ -274,10 +275,10 @@ router.post(
 
 /**
  * Set user password
- * This service will set the user password.
+ * This service will set the provided user password.
  */
 router.patch(
-	'password/:key',
+	'password',
 	(request, response) => {
 		const roles = [K.environment.role.admin]
 		if(Session.hasPermission(request, response, roles)) {
@@ -296,7 +297,7 @@ router.patch(
             ***In order to use this service, the current user must have the \`admin\` role.***
         `
 	)
-	.pathParam('key', keySchema)
+	.queryParam('key', keySchema)
 	.body(UserSetPassword, dd
 		`
             **User password**
@@ -305,11 +306,11 @@ router.patch(
             - \`password\` {String}: The new password
         `
 	)
-	.response(200, UserDisplayModel, dd
+	.response(200, UserChangePasswordModel, dd
 		`
             **Outcome**
             
-            The service will return \`{ success: true }\` if successful.
+            The service will return the \`username\` and \`default\` flag if successful.
         `
 	)
 	.response(401, ErrorModel, dd
@@ -343,11 +344,11 @@ router.patch(
 	)
 
 /**
- * Change user password
- * This service will change the user password.
+ * Change current user password
+ * This service will change the current user password.
  */
 router.patch(
-	'password',
+	'pass',
 	doChangePassword,
 	'change-pass'
 )
@@ -402,7 +403,7 @@ router.patch(
  * This service will set the user roles.
  */
 router.patch(
-	'role/:key',
+	'role',
 	(request, response) => {
 		const roles = [K.environment.role.admin]
 		if(Session.hasPermission(request, response, roles)) {
@@ -421,7 +422,7 @@ router.patch(
             ***In order to use this service, the current user must have the \`admin\` role.***
         `
 	)
-	.pathParam('key', keySchema)
+	.queryParam('key', keySchema)
 	.body(UserSetRoles, dd
 		`
             **User roles**
@@ -477,7 +478,7 @@ router.patch(
  * This service will delete a user by key.
  */
 router.delete(
-	'user/:key',
+	'user',
 	(request, response) => {
 		const roles = [K.environment.role.admin]
 		if(Session.hasPermission(request, response, roles)) {
@@ -496,7 +497,7 @@ router.delete(
             ***In order to use this service, the current user must have the \`admin\` role.***
         `
 	)
-	.pathParam('key', keySchema)
+	.queryParam('key', keySchema)
 	.response(200, UserDisplayModel, dd
 		`
             **Message**
@@ -517,13 +518,8 @@ router.delete(
  * This service will delete the current user.
  */
 router.delete(
-	'user',
-	(request, response) => {
-		const roles = [K.environment.role.admin]
-		if(Session.hasPermission(request, response, roles)) {
-			doDeleteCurrent(request, response)
-		}
-	},
+	'usr',
+	doDeleteCurrent,
 	'delete-me'
 )
 	.summary('Delete current user')
@@ -714,7 +710,7 @@ function doReset(request, response)
  */
 function doDelete(request, response)
 {
-	const key = request.pathParams.key
+	const key = request.queryParams.key
 
 	try {
 		const user = users.document(key)
@@ -790,7 +786,7 @@ function doSetPassword(request, response)
 	// Get user.
 	//
 	try {
-		user = users.document(request.pathParams.key)
+		user = users.document(request.queryParams.key)
 	}
 	catch (error)
 	{
@@ -863,7 +859,7 @@ function doSetRoles(request, response)
 	// Get user.
 	//
 	try {
-		user = users.document(request.pathParams.key)
+		user = users.document(request.queryParams.key)
 	}
 	catch (error)
 	{
