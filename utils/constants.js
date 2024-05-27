@@ -78,6 +78,11 @@ module.exports = Object.freeze({
     },
 
     //
+    // Views.
+    //
+    view: {},
+
+    //
     // Directories.
     //
     //	- name:		Directory name.

@@ -93,11 +93,33 @@ function createCollections()
             messages.push(`Collection ${name} created.`)
         }
 
+            //
+            // Handle existing collection.
+        //
+        else {
+            messages.push(`Collection ${name} already exists. Leaving it untouched.`)
+        }
+    }
+
+    ///
+    // Iterate views.
+    ///
+    for (const [key, value] of Object.entries(K.view))
+    {
+        ///
+        // Create if not there.
+        ///
+        if (K.db._view(value.name) === null) {
+            db._createView(value.name, value.type, value.properties)
+
+            messages.push(`View ${value.name} created.`)
+        }
+
         //
         // Handle existing collection.
         //
         else {
-            messages.push(`Collection ${name} already exists. Leaving it untouched.`)
+            messages.push(`View ${value.name} already exists. Leaving it untouched.`)
         }
     }
 
