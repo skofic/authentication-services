@@ -365,3 +365,9 @@ The service will return:
 - `401`: *No current user*: the current session does not have a registered user.
 - `403`: *Unauthorised user*: the service will return this code if the current user is not an administrator.
 - `500`: *Any error*.
+
+## License
+
+Copyright (c) 2023 Milko Skofic
+
+License: Apache 2
