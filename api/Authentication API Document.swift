@@ -23,7 +23,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -74,10 +73,6 @@ class MyRequestController {
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
 
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
-
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if (error == nil) {
@@ -118,10 +113,6 @@ class MyRequestController {
         guard var URL = URL(string: "http://localhost:8529/_db/EUFGIS/auth/auth/logout") else {return}
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
-
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
@@ -167,7 +158,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -224,7 +214,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -283,7 +272,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -342,7 +330,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -431,7 +418,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -488,7 +474,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -582,10 +567,6 @@ class MyRequestController {
         var request = URLRequest(url: URL)
         request.httpMethod = "DELETE"
 
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
-
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if (error == nil) {
@@ -663,10 +644,6 @@ class MyRequestController {
         var request = URLRequest(url: URL)
         request.httpMethod = "DELETE"
 
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
-
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if (error == nil) {
@@ -707,10 +684,6 @@ class MyRequestController {
         guard var URL = URL(string: "http://localhost:8529/_db/EUFGIS/auth/util/ping") else {return}
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
-
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
@@ -753,10 +726,6 @@ class MyRequestController {
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
 
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
-
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if (error == nil) {
@@ -797,10 +766,6 @@ class MyRequestController {
         guard var URL = URL(string: "http://localhost:8529/_db/EUFGIS/auth/util/echo/get/response") else {return}
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
-
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
@@ -846,7 +811,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -899,7 +863,6 @@ class MyRequestController {
         // Headers
 
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         // JSON Body
 
@@ -949,10 +912,6 @@ class MyRequestController {
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
 
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
-
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if (error == nil) {
@@ -993,10 +952,6 @@ class MyRequestController {
         guard var URL = URL(string: "http://localhost:8529/_db/EUFGIS/auth/util/path/temp") else {return}
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
-
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
@@ -1039,10 +994,6 @@ class MyRequestController {
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
 
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
-
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if (error == nil) {
@@ -1083,10 +1034,6 @@ class MyRequestController {
         guard var URL = URL(string: "http://localhost:8529/_db/EUFGIS/auth/util/session") else {return}
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
-
-        // Headers
-
-        request.addValue("FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4", forHTTPHeaderField: "Cookie")
 
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in

@@ -11,7 +11,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/auth/login',
         method: 'POST',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -62,7 +62,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/auth/whoami',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -113,7 +113,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/auth/logout',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -164,7 +164,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/signup',
         method: 'POST',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -215,7 +215,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/users',
         method: 'POST',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -266,7 +266,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/reset',
         method: 'POST',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -317,7 +317,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/password?key=284310176592',
         method: 'PATCH',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -368,7 +368,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/pass',
         method: 'PATCH',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -419,7 +419,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/role?key=284310176592',
         method: 'PATCH',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -470,7 +470,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/user?key=284310176592',
         method: 'DELETE',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -521,7 +521,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/user/usr',
         method: 'DELETE',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -572,7 +572,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/ping',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -623,7 +623,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/echo/get/request',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -674,7 +674,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/echo/get/response',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -725,7 +725,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/echo/post/request',
         method: 'POST',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -776,7 +776,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/echo/post/response',
         method: 'POST',
-        headers: {"Content-Type":"application/json; charset=utf-8","Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {"Content-Type":"application/json; charset=utf-8"}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -827,7 +827,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/path/base',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -878,7 +878,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/path/temp',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -929,7 +929,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/file/temp',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
@@ -980,7 +980,7 @@
         port: '8529',
         path: '/_db/EUFGIS/auth/util/session',
         method: 'GET',
-        headers: {"Cookie":"FOXXSID=6598424962c9b22c69779534f94bc6ea5454242ca6520a172a0d5eb97e728d1e; FOXXSID.sig=d4652ca7387d996a10d099bdebafbf8b3cc7b4f491cbea2030152f9b3046d8a4"}
+        headers: {}
     };
     httpOptions.headers['User-Agent'] = 'node ' + process.version;
  
